@@ -13,6 +13,13 @@ class ProductDetailsViewController: BaseController {
     var viewModel: ProductDetailsViewModel?
     let networkClient = NetworkClient.shared
 
+    var isFetchingData: Bool = false {
+        didSet {
+            activityIdicatorView.isHidden = !isFetchingData
+            isFetchingData ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+        }
+    }
+
     @IBOutlet weak var imagesCollectionView: UICollectionView! {
         didSet {
             imagesCollectionView.register(UINib(nibName: String(describing: ImageCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: ImageCell.self))
@@ -21,6 +28,8 @@ class ProductDetailsViewController: BaseController {
     @IBOutlet weak var additionalInfoTextView: UITextView!
     @IBOutlet weak var addToBagButton: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityIdicatorView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +40,9 @@ class ProductDetailsViewController: BaseController {
     }
     
     func fetchProductDetails() {
+        isFetchingData = true
         networkClient.loadProduct(productId: (viewModel?.product?.productId)!) { [weak self] product, error  in
+            self?.isFetchingData = false
             guard error == nil else {
                 self?.showErrorMessage(title: error?.localizedTitle, message: error?.localizedDescription)
                 return
@@ -43,6 +54,8 @@ class ProductDetailsViewController: BaseController {
             self?.addToBagButton.setTitle(self?.viewModel?.addToButtonTitle(), for: .normal)
         }
     }
+
+
 
     @IBAction func addToBagButtonPressed(_ sender: Any) {
         guard let product = viewModel?.product else { return }

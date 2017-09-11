@@ -48,6 +48,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-103" y="40"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="V8b-Ci-f6K">
@@ -147,7 +148,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Pxu-yV-pTU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="Add to Bag (67.00 £)">
+                                <state key="normal">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -157,18 +158,34 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2nO-f9-WvQ">
                                 <rect key="frame" x="0.0" y="396" width="414" height="282"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TsA-MU-RWj">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="dlQ-lE-1KW">
+                                        <rect key="frame" x="189" y="340" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="dlQ-lE-1KW" firstAttribute="centerY" secondItem="TsA-MU-RWj" secondAttribute="centerY" id="BEV-5L-eA9"/>
+                                    <constraint firstItem="dlQ-lE-1KW" firstAttribute="centerX" secondItem="TsA-MU-RWj" secondAttribute="centerX" id="bIA-dj-PvZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8Fu-rA-p0B" firstAttribute="bottom" secondItem="GBr-Xq-QC4" secondAttribute="bottom" id="4Rd-FE-uSv"/>
+                            <constraint firstItem="TsA-MU-RWj" firstAttribute="leading" secondItem="lgi-Re-iIh" secondAttribute="leading" id="BF5-d4-3Ph"/>
                             <constraint firstItem="Sc6-mx-f0V" firstAttribute="top" secondItem="2nO-f9-WvQ" secondAttribute="bottom" constant="8" id="C9r-W1-KWK"/>
+                            <constraint firstAttribute="trailing" secondItem="TsA-MU-RWj" secondAttribute="trailing" id="Dr7-S3-cfU"/>
                             <constraint firstItem="Sc6-mx-f0V" firstAttribute="leading" secondItem="lgi-Re-iIh" secondAttribute="leading" id="FSD-PN-yB8"/>
                             <constraint firstItem="8Fu-rA-p0B" firstAttribute="centerX" secondItem="GBr-Xq-QC4" secondAttribute="centerX" id="Kjd-sS-QXr"/>
+                            <constraint firstItem="8Wn-xY-REm" firstAttribute="top" secondItem="TsA-MU-RWj" secondAttribute="bottom" id="Pec-93-nSO"/>
                             <constraint firstItem="2nO-f9-WvQ" firstAttribute="leading" secondItem="lgi-Re-iIh" secondAttribute="leading" id="TuL-ni-rVc"/>
+                            <constraint firstItem="TsA-MU-RWj" firstAttribute="top" secondItem="q7y-nz-Vna" secondAttribute="bottom" id="UvO-kL-E4L"/>
                             <constraint firstAttribute="trailing" secondItem="Sc6-mx-f0V" secondAttribute="trailing" id="Yl6-nS-LlX"/>
                             <constraint firstItem="GBr-Xq-QC4" firstAttribute="height" secondItem="lgi-Re-iIh" secondAttribute="height" multiplier="0.5" id="cUM-BD-5bs"/>
                             <constraint firstItem="2nO-f9-WvQ" firstAttribute="top" secondItem="8Fu-rA-p0B" secondAttribute="bottom" constant="8" id="g5s-cM-0Zr"/>
@@ -188,6 +205,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIdicatorView" destination="TsA-MU-RWj" id="pRa-Rh-i05"/>
+                        <outlet property="activityIndicator" destination="dlQ-lE-1KW" id="nOM-JF-aQz"/>
                         <outlet property="addToBagButton" destination="Sc6-mx-f0V" id="LFd-lO-eJS"/>
                         <outlet property="additionalInfoTextView" destination="2nO-f9-WvQ" id="BKh-dk-2qc"/>
                         <outlet property="imagesCollectionView" destination="GBr-Xq-QC4" id="zve-8l-s5r"/>
@@ -196,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmc-fj-A5f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2620" y="40"/>
+            <point key="canvasLocation" x="2618.840579710145" y="39.945652173913047"/>
         </scene>
     </scenes>
     <resources>
